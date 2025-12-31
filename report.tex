@@ -1,0 +1,468 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{Project 2 - Computer Robotics}
+\author{Dharmik Patel - dsp187 - Undergraduate}
+\date{September 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{Generating Environments}
+\begin{itemize}
+    \item Code
+    \begin{itemize}
+        \item component\_1.py
+    \end{itemize}
+    \item Graphics \& Outputs
+    \begin{itemize}
+        \item component\_1-allmaps.jpg
+        \item map0
+        \item map1
+        \item map2
+        \item map3
+        \item map4
+        \item component\_1-report\_maps\_backup - folder
+    \end{itemize}
+\end{itemize}
+
+In my map files, each line is a obstacle, with 5 floats seperated by spaces. It is \([w, h, x, y, \theta]\). Figure \ref{fig:allmaps} shows the 5 generated maps.
+
+Line 56, " generate\_all(num\_of\_obstacls)"  is commented OUT. This is to avoid re generating the maps everytime the python code is run. If by mistake you re generate all the maps, you can move the maps from the "component\_1-report\_maps\_backup" folder into the root folder.
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=1\linewidth]{component_1-allmaps.jpg}
+    \caption{The generated maps used in this report}
+    \label{fig:allmaps}
+\end{figure}
+\section{Nearest neighbors}
+\textit{NN = Nearest Neighbors}
+\begin{itemize}
+    \item Code
+    \begin{itemize}
+        \item nearest\_neighbors..py
+    \end{itemize}
+    \item Graphics \& Outputs
+    \begin{itemize}
+        \item nearest\_neighbors-nn\_freeBody\_config0,png
+        \item nearest\_neighbors-nn\_freeBody\_config1,png
+        \item nearest\_neighbors-nn\_freeBody\_config2,png
+        \item nearest\_neighbors-nn\_freeBody\_config3,png
+    \end{itemize}
+    \begin{itemize}
+        \item nearest\_neighbors-nn\_freeBody\_config4,png
+        \item nearest\_neighbors-nn\_arm\_config0.png
+        \item nearest\_neighbors-nn\_arm\_config1.png
+        \item nearest\_neighbors-nn\_arm\_config2.png
+        \item nearest\_neighbors-nn\_arm\_config3.png
+        \item nearest\_neighbors-nn\_arm\_config4.png
+    \end{itemize}
+    \item Config Files
+    \begin{itemize}
+        \item Arm
+        \begin{itemize}
+            \item configs\_arm\_0.txt
+            \item configs\_arm\_1.txt
+            \item configs\_arm\_2.txt
+            \item configs\_arm\_3.txt
+            \item configs\_arm\_4.txt
+        \end{itemize}
+        \item Free Body
+        \begin{itemize}
+            \item configs\_freeBody\_0.txt
+            \item configs\_freeBody\_1.txt
+            \item configs\_freeBody\_2.txt
+            \item configs\_freeBody\_3.txt
+            \item configs\_freeBody\_4.txt
+    \end{itemize}
+\end{itemize}
+\end{itemize}
+
+First, I calculate the distance of between every pose and the start pose. I store them in a list of  (distance, pose). Then I sort that list by distances, and return back the first k poses. This is linear time. The free body distance is calculated with the L2 Norm of the x,y plus the min distance between the angles. We need the min distance between the angles, because the robot can rotate in either direction. The 2 Link arm distance is calculated with the L2 norm between the min dist for each angle in the pose.  Since we use the min distance for the angles, we respect the wrapping topology of angles. 
+
+For the images generated, the starting position of the free body was (0, 0, 0) with k = 10 and for the arm it was (0, 0) with k = 3. 
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{nearest_neighbors-nn_arm_config0.png}
+    \label{fig:enter-label}
+    \caption{nearest\_neighbors-nn\_arm\_config0.png}
+\end{figure}
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{nearest_neighbors-nn_arm_config1.png}
+    \label{fig:enter-label}
+    \caption{nearest\_neighbors-nn\_arm\_config1.png}
+\end{figure}
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{nearest_neighbors-nn_arm_config2.png}
+    \label{fig:enter-label}
+    \caption{nearest\_neighbors-nn\_arm\_config2.png}
+\end{figure}
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{nearest_neighbors-nn_arm_config3.png}
+    \label{fig:enter-label}
+    \caption{nearest\_neighbors-nn\_arm\_config3.png}
+\end{figure}
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{nearest_neighbors-nn_arm_config4.png}
+    \label{fig:enter-label}
+    \caption{nearest\_neighbors-nn\_arm\_config4.png}
+\end{figure}
+
+Figure 2 through Figure 6 show the three Nearst neighbors for the arm. As you can see in the figure, the robot does not care of the direction of the rotation, it just looks for the closets/min distance. For example, in Figure 2, 4, 6, the robot picks robot in both directions of rotation. If it did not account for the wrapping topology, the figures would only show rotation in one direction. The only reason in Figure 3, 5 the robot picked poses in one rotation, is because in the other direction, the poses were more "expensive." If you run the python code with the variable "viewAll" as True, you will see poses in the other direction had their second arm way further the actual nearst neightbors. Therefor the NN function respects the topology and account for both links.
+
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{nearest_neighbors-nn_freeBody_config0.png}
+    \caption{nearest\_neighbors-nn\_freeBody\_config0.png}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{nearest_neighbors-nn_freeBody_config1.png}
+    \caption{nearest\_neighbors-nn\_freeBody\_config1.png}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{nearest_neighbors-nn_freeBody_config2.png}
+    \caption{nearest\_neighbors-nn\_freeBody\_config2.png}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{nearest_neighbors-nn_freeBody_config3.png}
+    \caption{nearest\_neighbors-nn\_freeBody\_config3.png}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{nearest_neighbors-nn_freeBody_config4.png}
+    \caption{nearest\_neighbors-nn\_freeBody\_config4.png}
+    \label{fig:enter-label}
+\end{figure}
+
+Figures 7 through 11 show the 10 NN for the free body. The issue with the distance method I used was that it implicitly "prioritized" the angles more. That is because the angles in general have a higher magnitude then the L2 norm distances. That is because they are in different units, so when you add them you need to weight one of them. I did not do that. That can be seen in the figures 7-11 where the robots picked as closer might not "look" the closet, but they are due to the formula I used. 
+
+\section{Collision checking}
+\begin{itemize}
+    \item Code
+    \begin{itemize}
+        \item collision\_checking.py
+    \end{itemize}
+    \item Graphis \& Output
+    \begin{itemize}
+        \item Free Body
+        \begin{itemize}
+        \item collision\_checking-col\_freeBody\_map0.gif
+            \item collision\_checking-col\_freeBody\_map1.gif
+            \item collision\_checking-col\_freeBody\_map2.gif
+            \item collision\_checking-col\_freeBody\_map3.gif
+            \item collision\_checking-col\_freeBody\_map4.gif
+        \end{itemize}
+        \item Arm
+        \begin{itemize}
+            \item collision\_checking-col\_arm\_map0.gif
+            \item collision\_checking-col\_arm\_map1.gif
+            \item collision\_checking-col\_arm\_map2.gif
+            \item collision\_checking-col\_arm\_map3.gif
+            \item collision\_checking-col\_arm\_map4.gif
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+I used Separating Axis Theorem to implement collison checking. For the 2 link arm, I just treated each link as a rectangle, and did the SAT on each one of them. If you run the code, their might be a lag on the first frame, but I do not know what that is. Nevertheless, I animate 10 rand poses and for each pose mark the colliding stuff in red. Figures 12 - 22 show 1 screenshot from each gif file listed above where a collision happened. The screenshots are only for the report, and not put in the submitted files on canvas. Please view the .gif files if you want to view where the screenshots came from. 
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{collision_checking-col_arm_map0.png}
+    \caption{collision\_checking-col\_arm\_map0.png}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{collision_checking-col_arm_map1.png}
+    \caption{collision\_checking-col\_arm\_map1.png}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{collision_checking-col_arm_map2.png}
+    \caption{collision\_checking-col\_arm\_map2.png}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{collision_checking-col_arm_map3.png}
+    \caption{collision\_checking-col\_arm\_map3.png}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{collision_checking-col_arm_map4.png}
+    \caption{collision\_checking-col\_arm\_map4.png}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{collision_checking-col_freeBody_map0.png}
+    \caption{collision\_checking-col\_freeBody\_map0.png}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{collision_checking-col_freeBody_map1.png}
+    \caption{collision\_checking-col\_freeBody\_map1.png}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{collision_checking-col_freeBody_map2.png}
+    \caption{collision\_checking-col\_freeBody\_map2.png}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{collision_checking-col_freeBody_map3.png}
+    \caption{collision\_checking-col\_freeBody\_map3.png}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{collision_checking-col_freeBody_map4.png}
+    \caption{collision\_checking-col\_freeBody\_map4.png}
+    \label{fig:enter-label}
+\end{figure}
+
+
+
+\section{PRM}
+\begin{itemize}
+    \item Code
+    \begin{itemize}
+        \item prm.py
+    \end{itemize}
+    \item Graphics \& Outputs
+    \begin{itemize}
+        \item Map 4
+        \begin{itemize}
+            \item Free Body
+            \begin{itemize}
+                \item prm\_freeBody\_map4\_solution.mov
+                \item prm\_freeBody\_map4\_graph.jpg
+            \end{itemize}
+            \item Arm
+            \begin{itemize}
+                \item prm\_arm\_map4\_solution.mov
+                \item prm\_arm\_map4\_graph.jpg
+            \end{itemize}
+        \end{itemize}
+        \item Map 3
+        \begin{itemize}
+            \item Free Body
+            \begin{itemize}
+                \item prm\_freeBody\_map3\_solution.mov
+                \item prm\_freeBody\_map3\_graph.jpg
+            \end{itemize}
+            \item Arm
+            \begin{itemize}
+                \item prm\_arm\_map3\_solution.mov
+                \item prm\_arm\_map3\_graph.jpg
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+    \end{itemize}
+
+All files are in the zip file.
+
+The .mov files holds the robot moving through the environment. I screen recording my screen, because the exporting from matplotlib was not working. That is why they are .mov files because MacOS screen records in .mov format. The .jpg show what the graph of PRM looks like. Since the nodes are 5000, the graph is very dense. If you run PRM at lower nodes say, 300, you can see the graph properly. 
+
+The animations might look like they hit the obstacles, but that is just due to the thickness of the line. If you zoom into the actual matplotlib plots after running the python file, you will see that the robot NEVER hits an obstacle. I designed the environments in this way, to emulate a narrow passage especially for the 2 link arm. 
+
+
+In the "make\_prm" I implemented the prm algo. For sampling, I just random samples the x, y and then random sampled the theta in from \(-\pi\) to \(\pi\). I kept on sampling until I found a non colliding pose. Then I got the k NN nodes in the graph. I added the rand pose after that. Then for each of the k nn pose, I used the Local Planner from HW1, which would return a discretized path from the rand pose to the kth pose. If that path did not have collisions, then I would add that as in edge. I checked collisions along a path by checking collisions at each discretized pose returned by the local planner. 
+
+Then in the "query\_prm" method I would attempt to connect the start and the goal nodes to the graph. I would connect to the closet node that I could get to without an obstacle in the way. Then I would run A* Algo to find the path, 
+
+\section{RRT}
+\begin{itemize}
+    \item Code
+    \begin{itemize}
+        \item rrt.py
+    \end{itemize}
+    \item Graphics \& Outputs
+    \begin{itemize}
+        \item Map 4
+        \begin{itemize}
+            \item Free Body
+            \begin{itemize}
+                \item rrt\_freeBody\_map4\_solution.mov
+                \item rrt\_freeBody\_map4\_tree.mov
+            \end{itemize}
+            \item Arm
+            \begin{itemize}
+                \item rrt\_arm\_map4\_solution.mov
+                \item rrt\_arm\_map4\_tree.mov
+            \end{itemize}
+        \end{itemize}
+        \item Map 3
+        \begin{itemize}
+            \item Free Body
+            \begin{itemize}
+                \item rrt\_freeBody\_map3\_solution.mov
+                \item rrt\_freeBody\_map3\_tree.mov
+            \end{itemize}
+            \item Arm
+            \begin{itemize}
+                \item rrt\_arm\_map3\_solution.mov
+                \item rrt\_arm\_map3\_tree.move
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+    \end{itemize}
+
+The trees are animated to show the growth. All files are in the zip file.
+
+For RRT, I used the same code from PRM, but some things got changed. I first used a tree instead of a graph. So first I would random sample a pose as described in PRM, but I would also sample the goal 5\% of the time as recommended in the pdf. This will help RRT get to the goal in the limited number of iterations. 
+
+\textbf{To add edges to the tree},  I would get the nearest node to the rand sample, and then use the steer function to steer towards that random node a specific distance. The steer func returns a discretized path from the nearst node to the new node a specfic distance away towards the rand sample. If no collison occur along tha path, then I would add that edge to the tree. Since this is a single query algo, I would directly run A* in the "make\_rrt" method.
+
+\section{AO Planner - PRM*}
+\begin{itemize}
+    \item Code
+    \begin{itemize}
+        \item AO\_planner.py
+    \end{itemize}
+    \item Graphics \& Outputs
+    \begin{itemize}
+        \item Map 4
+        \begin{itemize}
+            \item Free Body
+            \begin{itemize}
+                \item AO\_planner-prm*\_freeBody\_map4\_solution.mov
+                \item AO\_planner-prm*\_freeBody\_map4\_tree.jpg
+            \end{itemize}
+            \item Arm
+            \begin{itemize}
+                \item AO\_planner-prm*\_arm\_map4\_solution.mov
+                \item AO\_planner-prm*\_arm\_map4\_tree.jpg
+            \end{itemize}
+        \end{itemize}
+        \item Map 3
+        \begin{itemize}
+            \item Free Body
+            \begin{itemize}
+                \item AO\_planner-prm*\_freeBody\_map3\_solution.mov
+                \item AO\_planner-prm*\_freeBody\_map3\_tree.jpg
+            \end{itemize}
+            \item Arm
+            \begin{itemize}
+                \item AO\_planner-prm*\_arm\_map3\_solution.mov
+                \item AO\_planner-prm*\_arm\_map3\_tree.jpg
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+    \end{itemize}
+
+All files are in the zip file.
+
+I decided to implement PRM*. The only differnce between PRM and PRM* is that as the number of nodes increased, I returned k*log(N) neighboors. N is the number of nodes currently in the graph. k is a constant at int(2e).  This will cause more edges to formed as the number of nodes increases, leading to a closer delta optimal path. 
+\subsection{Comparison}
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Map Number} & \textbf{Path Found \%} & \textbf{AVG Run Time (s)} & \textbf{AVG Path Cost} \\
+\hline
+0 & 1.0 & 2.28 & 4.18 \\
+1 & 1.0 & 3.90 & 3.28 \\
+2 & 1.0 & 6.71 & 4.35 \\
+3 & 1.0 & 9.28 & 4.68 \\
+4 & 1.0 & 12.66 & 3.75 \\
+\hline
+\end{tabular}
+\caption{PRM Arm Robot Testing Results. Each map run 10 times}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Map Number} & \textbf{Path Found \%} & \textbf{AVG Run Time (s)} & \textbf{AVG Path Cost} \\
+\hline
+0 & 1.0 & 0.89 & 6.04 \\
+1 & 1.0 & 1.10 & 4.42 \\
+2 & 1.0 & 1.53 & 6.08 \\
+3 & 1.0 & 1.93 & 6.75 \\
+4 & 1.0 & 2.46 & 5.47 \\
+\hline
+\end{tabular}
+\caption{RRT Arm Robot Testing Results. Each map run 10 times}
+\end{table}
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Map Number} & \textbf{Path Found \%} & \textbf{AVG Run Time (s)} & \textbf{AVG Path Cost} \\
+\hline
+0 & 1.0 & 11.99 & 4.01 \\
+1 & 1.0 & 23.15 & 3.15 \\
+2 & 1.0 & 44.13 & 4.12 \\
+3 & 1.0 & 62.52 & 4.42 \\
+4 & 1.0 & 86.69 & 3.31 \\
+\hline
+\end{tabular}
+\caption{PMR* Robot Testing Results. Each map run 10 times}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Map Number} & \textbf{Path Found \%} & \textbf{AVG Run Time (s)} & \textbf{AVG Path Cost} \\
+\hline
+0 & 1.0 & 5.63 & 31.48 \\
+1 & 1.0 & 11.70 & 30.99 \\
+2 & 1.0 & 22.18 & 24.01 \\
+3 & 0.8 & 33.00 & 30.63 \\
+4 & 1.0 & 41.69 & 24.94 \\
+\hline
+\end{tabular}
+\caption{PRM FreeBody Robot Testing Results. Each map run 10 times}
+\end{table}
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Map Number} & \textbf{Path Found \%} & \textbf{AVG Run Time (s)} & \textbf{AVG Path Cost} \\
+\hline
+0 & 1.0 & 0.73 & 37.29 \\
+1 & 1.0 & 1.01 & 35.89 \\
+2 & 0.8 & 1.53 & 25.60 \\
+3 & 0.3 & 2.21 & 31.38 \\
+4 & 0.4 & 2.71 & 31.99 \\
+\hline
+\end{tabular}
+\caption{RRT FreeBody Robot Testing Results. Each map run 10 times}
+\end{table}
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Map Number} & \textbf{Path Found \%} & \textbf{AVG Run Time (s)} & \textbf{AVG Path Cost} \\
+\hline
+0 & 1.0 & 34.96 & 28.28 \\
+1 & 1.0 & 75.66 & 28.75 \\
+2 & 1.0 & 145.05 & 20.32 \\
+3 & 1.0 & 211.10 & 24.93 \\
+4 & 1.0 & 321.12 & 23.89 \\
+\hline
+\end{tabular}
+\caption{PRM* FreeBody Robot Testing Results.  Each map run 10 times}
+\end{table}
+
+The pdf questions did not say to explain the results. But in general, rrt was the fastest, but prm* returned the most optimal paths. 
+
+\end{document}
