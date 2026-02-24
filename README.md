@@ -1,4 +1,5 @@
-# Thread Scheduler
+# Autonomous Navigation
+For Robotic Cars and Arms. Started off by generating eviorments, then collison checking and then finally implementing PRM, PRM*, RRT, RRT*. 
 
 # Generating Environments
 
