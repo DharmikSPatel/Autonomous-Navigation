@@ -4,23 +4,15 @@ For Robotic Cars and Arms. Started off by generating eviorments, then collison c
 # Generating Environments
 
 - Code
-
   - component_1.py
 
 - Graphics & Outputs
-
   - component_1-allmaps.jpg
-
   - map0
-
   - map1
-
   - map2
-
   - map3
-
   - map4
-
   - component_1-report_maps_backup - folder
 
 In my map files, each line is a obstacle, with 5 floats seperated by
@@ -43,57 +35,31 @@ mistake you re generate all the maps, you can move the maps from the
 *NN = Nearest Neighbors*
 
 - Code
-
   - nearest_neighbors..py
-
 - Graphics & Outputs
-
   - nearest_neighbors-nn_freeBody_config0,png
-
   - nearest_neighbors-nn_freeBody_config1,png
-
   - nearest_neighbors-nn_freeBody_config2,png
-
   - nearest_neighbors-nn_freeBody_config3,png
-
-  <!-- -->
-
   - nearest_neighbors-nn_freeBody_config4,png
-
   - nearest_neighbors-nn_arm_config0.png
-
   - nearest_neighbors-nn_arm_config1.png
-
   - nearest_neighbors-nn_arm_config2.png
-
   - nearest_neighbors-nn_arm_config3.png
-
   - nearest_neighbors-nn_arm_config4.png
 
 - Config Files
-
   - Arm
-
     - configs_arm_0.txt
-
     - configs_arm_1.txt
-
     - configs_arm_2.txt
-
     - configs_arm_3.txt
-
     - configs_arm_4.txt
-
   - Free Body
-
     - configs_freeBody_0.txt
-
     - configs_freeBody_1.txt
-
     - configs_freeBody_2.txt
-
     - configs_freeBody_3.txt
-
     - configs_freeBody_4.txt
 
 First, I calculate the distance of between every pose and the start
@@ -110,35 +76,35 @@ For the images generated, the starting position of the free body was (0,
 0, 0) with k = 10 and for the arm it was (0, 0) with k = 3.
 
 <figure id="fig:enter-label" data-latex-placement="htbp!">
-<p><img src="nearest_neighbors-nn_arm_config0.png" style="width:50.0%"
+<p><img src="Utils/Outputs/nearest_neighbors-nn_arm_config0.png" style="width:50.0%"
 alt="image" /> <span id="fig:enter-label"
 data-label="fig:enter-label"></span></p>
 <figcaption>nearest_neighbors-nn_arm_config0.png</figcaption>
 </figure>
 
 <figure id="fig:enter-label" data-latex-placement="htbp!">
-<p><img src="nearest_neighbors-nn_arm_config1.png" style="width:50.0%"
+<p><img src="Utils/Outputs/nearest_neighbors-nn_arm_config1.png" style="width:50.0%"
 alt="image" /> <span id="fig:enter-label"
 data-label="fig:enter-label"></span></p>
 <figcaption>nearest_neighbors-nn_arm_config1.png</figcaption>
 </figure>
 
 <figure id="fig:enter-label" data-latex-placement="htbp!">
-<p><img src="nearest_neighbors-nn_arm_config2.png" style="width:50.0%"
+<p><img src="Utils/Outputs/nearest_neighbors-nn_arm_config2.png" style="width:50.0%"
 alt="image" /> <span id="fig:enter-label"
 data-label="fig:enter-label"></span></p>
 <figcaption>nearest_neighbors-nn_arm_config2.png</figcaption>
 </figure>
 
 <figure id="fig:enter-label" data-latex-placement="htbp!">
-<p><img src="nearest_neighbors-nn_arm_config3.png" style="width:50.0%"
+<p><img src="Utils/Outputs/nearest_neighbors-nn_arm_config3.png" style="width:50.0%"
 alt="image" /> <span id="fig:enter-label"
 data-label="fig:enter-label"></span></p>
 <figcaption>nearest_neighbors-nn_arm_config3.png</figcaption>
 </figure>
 
 <figure id="fig:enter-label" data-latex-placement="htbp!">
-<p><img src="nearest_neighbors-nn_arm_config4.png" style="width:50.0%"
+<p><img src="Utils/Outputs/nearest_neighbors-nn_arm_config4.png" style="width:50.0%"
 alt="image" /> <span id="fig:enter-label"
 data-label="fig:enter-label"></span></p>
 <figcaption>nearest_neighbors-nn_arm_config4.png</figcaption>
@@ -158,31 +124,31 @@ Therefor the NN function respects the topology and account for both
 links.
 
 <figure id="fig:enter-label" data-latex-placement="htbp!">
-<img src="nearest_neighbors-nn_freeBody_config0.png"
+<img src="Utils/Outputs/nearest_neighbors-nn_freeBody_config0.png"
 style="width:50.0%" />
 <figcaption>nearest_neighbors-nn_freeBody_config0.png</figcaption>
 </figure>
 
 <figure id="fig:enter-label" data-latex-placement="htbp!">
-<img src="nearest_neighbors-nn_freeBody_config1.png"
+<img src="Utils/Outputs/nearest_neighbors-nn_freeBody_config1.png"
 style="width:50.0%" />
 <figcaption>nearest_neighbors-nn_freeBody_config1.png</figcaption>
 </figure>
 
 <figure id="fig:enter-label" data-latex-placement="htbp!">
-<img src="nearest_neighbors-nn_freeBody_config2.png"
+<img src="Utils/Outputs/nearest_neighbors-nn_freeBody_config2.png"
 style="width:50.0%" />
 <figcaption>nearest_neighbors-nn_freeBody_config2.png</figcaption>
 </figure>
 
 <figure id="fig:enter-label" data-latex-placement="htbp!">
-<img src="nearest_neighbors-nn_freeBody_config3.png"
+<img src="Utils/Outputs/nearest_neighbors-nn_freeBody_config3.png"
 style="width:50.0%" />
 <figcaption>nearest_neighbors-nn_freeBody_config3.png</figcaption>
 </figure>
 
 <figure id="fig:enter-label" data-latex-placement="htbp!">
-<img src="nearest_neighbors-nn_freeBody_config4.png"
+<img src="Utils/Outputs/nearest_neighbors-nn_freeBody_config4.png"
 style="width:50.0%" />
 <figcaption>nearest_neighbors-nn_freeBody_config4.png</figcaption>
 </figure>
@@ -199,33 +165,19 @@ formula I used.
 # Collision checking
 
 - Code
-
   - collision_checking.py
-
 - Graphis & Output
-
   - Free Body
-
     - collision_checking-col_freeBody_map0.gif
-
     - collision_checking-col_freeBody_map1.gif
-
     - collision_checking-col_freeBody_map2.gif
-
     - collision_checking-col_freeBody_map3.gif
-
     - collision_checking-col_freeBody_map4.gif
-
   - Arm
-
     - collision_checking-col_arm_map0.gif
-
     - collision_checking-col_arm_map1.gif
-
     - collision_checking-col_arm_map2.gif
-
     - collision_checking-col_arm_map3.gif
-
     - collision_checking-col_arm_map4.gif
 
 I used Separating Axis Theorem to implement collison checking. For the 2
@@ -234,61 +186,59 @@ each one of them. If you run the code, their might be a lag on the first
 frame, but I do not know what that is. Nevertheless, I animate 10 rand
 poses and for each pose mark the colliding stuff in red. Figures 12 - 22
 show 1 screenshot from each gif file listed above where a collision
-happened. The screenshots are only for the report, and not put in the
-submitted files on canvas. Please view the .gif files if you want to
-view where the screenshots came from.
+happened. 
 
 <figure id="fig:enter-label" data-latex-placement="htbp!">
-<img src="collision_checking-col_arm_map0.png" style="width:50.0%" />
+<img src="Collision Checking Tests/Outputs/collision_checking-col_arm_map0.gif" style="width:50.0%" />
 <figcaption>collision_checking-col_arm_map0.png</figcaption>
 </figure>
 
 <figure id="fig:enter-label" data-latex-placement="htbp!">
-<img src="collision_checking-col_arm_map1.png" style="width:50.0%" />
+<img src="Collision Checking Tests/Outputs/collision_checking-col_arm_map1.gif" style="width:50.0%" />
 <figcaption>collision_checking-col_arm_map1.png</figcaption>
 </figure>
 
 <figure id="fig:enter-label" data-latex-placement="htbp!">
-<img src="collision_checking-col_arm_map2.png" style="width:50.0%" />
+<img src="Collision Checking Tests/Outputs/collision_checking-col_arm_map2.gif" style="width:50.0%" />
 <figcaption>collision_checking-col_arm_map2.png</figcaption>
 </figure>
 
 <figure id="fig:enter-label" data-latex-placement="htbp!">
-<img src="collision_checking-col_arm_map3.png" style="width:50.0%" />
+<img src="Collision Checking Tests/Outputs/collision_checking-col_arm_map3.gif" style="width:50.0%" />
 <figcaption>collision_checking-col_arm_map3.png</figcaption>
 </figure>
 
 <figure id="fig:enter-label" data-latex-placement="htbp!">
-<img src="collision_checking-col_arm_map4.png" style="width:50.0%" />
+<img src="Collision Checking Tests/Outputs/collision_checking-col_arm_map4.gif" style="width:50.0%" />
 <figcaption>collision_checking-col_arm_map4.png</figcaption>
 </figure>
 
 <figure id="fig:enter-label" data-latex-placement="htbp!">
-<img src="collision_checking-col_freeBody_map0.png"
+<img src="Collision Checking Tests/Outputs/collision_checking-col_freeBody_map0.gif"
 style="width:50.0%" />
 <figcaption>collision_checking-col_freeBody_map0.png</figcaption>
 </figure>
 
 <figure id="fig:enter-label" data-latex-placement="htbp!">
-<img src="collision_checking-col_freeBody_map1.png"
+<img src="Collision Checking Tests/Outputs/collision_checking-col_freeBody_map1.gif"
 style="width:50.0%" />
 <figcaption>collision_checking-col_freeBody_map1.png</figcaption>
 </figure>
 
 <figure id="fig:enter-label" data-latex-placement="htbp!">
-<img src="collision_checking-col_freeBody_map2.png"
+<img src="Collision Checking Tests/Outputs/collision_checking-col_freeBody_map2.gif"
 style="width:50.0%" />
 <figcaption>collision_checking-col_freeBody_map2.png</figcaption>
 </figure>
 
 <figure id="fig:enter-label" data-latex-placement="htbp!">
-<img src="collision_checking-col_freeBody_map3.png"
+<img src="Collision Checking Tests/Outputs/collision_checking-col_freeBody_map3.gif"
 style="width:50.0%" />
 <figcaption>collision_checking-col_freeBody_map3.png</figcaption>
 </figure>
 
 <figure id="fig:enter-label" data-latex-placement="htbp!">
-<img src="collision_checking-col_freeBody_map4.png"
+<img src="Collision Checking Tests/Outputs/collision_checking-col_freeBody_map4.gif"
 style="width:50.0%" />
 <figcaption>collision_checking-col_freeBody_map4.png</figcaption>
 </figure>
@@ -296,40 +246,23 @@ style="width:50.0%" />
 # PRM
 
 - Code
-
   - prm.py
-
 - Graphics & Outputs
-
   - Map 4
-
     - Free Body
-
       - prm_freeBody_map4_solution.mov
-
       - prm_freeBody_map4_graph.jpg
-
     - Arm
-
       - prm_arm_map4_solution.mov
-
       - prm_arm_map4_graph.jpg
-
   - Map 3
-
     - Free Body
-
       - prm_freeBody_map3_solution.mov
-
       - prm_freeBody_map3_graph.jpg
-
     - Arm
-
       - prm_arm_map3_solution.mov
-
       - prm_arm_map3_graph.jpg
 
-All files are in the zip file.
 
 The .mov files holds the robot moving through the environment. I screen
 recording my screen, because the exporting from matplotlib was not
@@ -362,41 +295,24 @@ to find the path,
 # RRT
 
 - Code
-
   - rrt.py
-
 - Graphics & Outputs
-
   - Map 4
-
     - Free Body
-
       - rrt_freeBody_map4_solution.mov
-
       - rrt_freeBody_map4_tree.mov
-
     - Arm
-
       - rrt_arm_map4_solution.mov
-
       - rrt_arm_map4_tree.mov
-
   - Map 3
-
     - Free Body
-
       - rrt_freeBody_map3_solution.mov
-
       - rrt_freeBody_map3_tree.mov
-
     - Arm
-
       - rrt_arm_map3_solution.mov
-
       - rrt_arm_map3_tree.move
 
-The trees are animated to show the growth. All files are in the zip
-file.
+The trees are animated to show the growth.
 
 For RRT, I used the same code from PRM, but some things got changed. I
 first used a tree instead of a graph. So first I would random sample a
@@ -417,38 +333,22 @@ in the "make_rrt" method.
 - Code
 
   - AO_planner.py
-
 - Graphics & Outputs
-
   - Map 4
-
     - Free Body
-
       - AO_planner-prm\*\_freeBody_map4_solution.mov
-
       - AO_planner-prm\*\_freeBody_map4_tree.jpg
-
     - Arm
-
       - AO_planner-prm\*\_arm_map4_solution.mov
-
       - AO_planner-prm\*\_arm_map4_tree.jpg
-
   - Map 3
-
     - Free Body
-
       - AO_planner-prm\*\_freeBody_map3_solution.mov
-
       - AO_planner-prm\*\_freeBody_map3_tree.jpg
-
     - Arm
-
       - AO_planner-prm\*\_arm_map3_solution.mov
-
       - AO_planner-prm\*\_arm_map3_tree.jpg
 
-All files are in the zip file.
 
 I decided to implement PRM\*. The only differnce between PRM and PRM\*
 is that as the number of nodes increased, I returned k\*log(N)
@@ -460,63 +360,62 @@ of nodes increases, leading to a closer delta optimal path.
 
 | **Map Number** | **Path Found %** | **AVG Run Time (s)** | **AVG Path Cost** |
 |:--------------:|:----------------:|:--------------------:|:-----------------:|
-|       0        |       1.0        |         2.28         |       4.18        |
-|       1        |       1.0        |         3.90         |       3.28        |
-|       2        |       1.0        |         6.71         |       4.35        |
-|       3        |       1.0        |         9.28         |       4.68        |
-|       4        |       1.0        |        12.66         |       3.75        |
+|       0        |       100.0        |         2.28         |       4.18        |
+|       1        |       100.0        |         3.90         |       3.28        |
+|       2        |       100.0        |         6.71         |       4.35        |
+|       3        |       100.0        |         9.28         |       4.68        |
+|       4        |       100.0        |        12.66         |       3.75        |
 
 PRM Arm Robot Testing Results. Each map run 10 times
 
 | **Map Number** | **Path Found %** | **AVG Run Time (s)** | **AVG Path Cost** |
 |:--------------:|:----------------:|:--------------------:|:-----------------:|
-|       0        |       1.0        |         0.89         |       6.04        |
-|       1        |       1.0        |         1.10         |       4.42        |
-|       2        |       1.0        |         1.53         |       6.08        |
-|       3        |       1.0        |         1.93         |       6.75        |
-|       4        |       1.0        |         2.46         |       5.47        |
+|       0        |       100.0        |         0.89         |       6.04        |
+|       1        |       100.0        |         1.10         |       4.42        |
+|       2        |       100.0        |         1.53         |       6.08        |
+|       3        |       100.0        |         1.93         |       6.75        |
+|       4        |       100.0        |         2.46         |       5.47        |
 
 RRT Arm Robot Testing Results. Each map run 10 times
 
 | **Map Number** | **Path Found %** | **AVG Run Time (s)** | **AVG Path Cost** |
 |:--------------:|:----------------:|:--------------------:|:-----------------:|
-|       0        |       1.0        |        11.99         |       4.01        |
-|       1        |       1.0        |        23.15         |       3.15        |
-|       2        |       1.0        |        44.13         |       4.12        |
-|       3        |       1.0        |        62.52         |       4.42        |
-|       4        |       1.0        |        86.69         |       3.31        |
+|       0        |       100.0        |        11.99         |       4.01        |
+|       1        |       100.0        |        23.15         |       3.15        |
+|       2        |       100.0        |        44.13         |       4.12        |
+|       3        |       100.0        |        62.52         |       4.42        |
+|       4        |       100.0        |        86.69         |       3.31        |
 
 PMR\* Robot Testing Results. Each map run 10 times
 
 | **Map Number** | **Path Found %** | **AVG Run Time (s)** | **AVG Path Cost** |
 |:--------------:|:----------------:|:--------------------:|:-----------------:|
-|       0        |       1.0        |         5.63         |       31.48       |
-|       1        |       1.0        |        11.70         |       30.99       |
-|       2        |       1.0        |        22.18         |       24.01       |
-|       3        |       0.8        |        33.00         |       30.63       |
-|       4        |       1.0        |        41.69         |       24.94       |
+|       0        |       100.0        |         5.63         |       31.48       |
+|       1        |       100.0        |        11.70         |       30.99       |
+|       2        |       100.0        |        22.18         |       24.01       |
+|       3        |       80.0         |        33.00         |       30.63       |
+|       4        |       100.0        |        41.69         |       24.94       |
 
 PRM FreeBody Robot Testing Results. Each map run 10 times
 
 | **Map Number** | **Path Found %** | **AVG Run Time (s)** | **AVG Path Cost** |
 |:--------------:|:----------------:|:--------------------:|:-----------------:|
-|       0        |       1.0        |         0.73         |       37.29       |
-|       1        |       1.0        |         1.01         |       35.89       |
-|       2        |       0.8        |         1.53         |       25.60       |
-|       3        |       0.3        |         2.21         |       31.38       |
-|       4        |       0.4        |         2.71         |       31.99       |
+|       0        |       100.0        |         0.73         |       37.29       |
+|       1        |       100.0        |         1.01         |       35.89       |
+|       2        |       80.0         |         1.53         |       25.60       |
+|       3        |       30.0         |         2.21         |       31.38       |
+|       4        |       40.0         |         2.71         |       31.99       |
 
 RRT FreeBody Robot Testing Results. Each map run 10 times
 
 | **Map Number** | **Path Found %** | **AVG Run Time (s)** | **AVG Path Cost** |
 |:--------------:|:----------------:|:--------------------:|:-----------------:|
-|       0        |       1.0        |        34.96         |       28.28       |
-|       1        |       1.0        |        75.66         |       28.75       |
-|       2        |       1.0        |        145.05        |       20.32       |
-|       3        |       1.0        |        211.10        |       24.93       |
-|       4        |       1.0        |        321.12        |       23.89       |
+|       0        |       100.0        |        34.96         |       28.28       |
+|       1        |       100.0        |        75.66         |       28.75       |
+|       2        |       100.0        |        145.05        |       20.32       |
+|       3        |       100.0        |        211.10        |       24.93       |
+|       4        |       100.0        |        321.12        |       23.89       |
 
 PRM\* FreeBody Robot Testing Results. Each map run 10 times
 
-The pdf questions did not say to explain the results. But in general,
-rrt was the fastest, but prm\* returned the most optimal paths.
+In general, rrt was the fastest, but prm\* returned the most optimal paths.
