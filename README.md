@@ -34,7 +34,7 @@ mistake you re generate all the maps, you can move the maps from the
 "component_1-report_maps_backup" folder into the root folder.
 
 <figure id="fig:allmaps" data-latex-placement="htbp!">
-<img src="component_1-allmaps.jpg" style="width:100.0%" />
+<img src="Generate Envs/component_1-allmaps.jpg" style="width:100.0%" />
 <figcaption>The generated maps used in this report</figcaption>
 </figure>
 
